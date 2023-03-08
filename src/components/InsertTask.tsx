@@ -14,6 +14,7 @@ export default function InsertTask({ setTodoList }: Props) {
     title: "",
     description: "",
     date: [],
+    done: false,
   });
 
   const onDaysSelected = (days: string[]) => { 
@@ -26,6 +27,7 @@ export default function InsertTask({ setTodoList }: Props) {
       title: "",
       description: "",
       date: [],
+      done: false,
     });
   };
 
