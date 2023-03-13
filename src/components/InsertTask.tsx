@@ -22,7 +22,6 @@ export default function InsertTask({ setTodoList }: Props) {
   }
 
   const handleForm = () => {
-    setTodoList((oldTodoList) => [...oldTodoList, form]);
     setForm({
       title: "",
       description: "",
@@ -30,8 +29,6 @@ export default function InsertTask({ setTodoList }: Props) {
       done: false,
     });
   };
-
-  console.log(form);
 
   return (
     <AlertDialog.Root>

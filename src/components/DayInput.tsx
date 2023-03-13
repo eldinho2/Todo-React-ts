@@ -10,8 +10,6 @@ interface Props {
 
 export default function Example({ onDaysSelected }: Props) {
   const [selectedDays, setSelectedDays] = useState<Date[]>([]);
-
-  console.log(selectedDays);
   
 
   function isPastDate(date: Date) {
