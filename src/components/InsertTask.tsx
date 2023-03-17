@@ -53,7 +53,7 @@ export default function InsertTask() {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
-        <button className="Button violet">Adicionar Tarefa</button>
+        <button className="Button violet"><img src="./src/assets/plus-svgrepo-com.svg" alt="" />Adicionar Tarefa</button>
       </AlertDialog.Trigger>
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="AlertDialogOverlay" />

@@ -61,9 +61,12 @@ button {
   height: 35px;
 }
 .Button.violet {
+  width: 150px;
   background-color: #212457;
   color: #76a4fd;
   box-shadow: 0 2px 10px var(--blackA7);
+  margin: auto auto 10px auto;
+  position: relative;
 }
 .Button.violet:hover {
   background-color: #234b97;
@@ -90,6 +93,14 @@ button {
 }
 .Button.mauve:focus {
   box-shadow: 0 0 0 2px var(--mauve7);
+}
+
+.Button.violet img {
+  max-width: 100%;
+  max-height: 20px;
+  position: absolute;
+  left: 5%;
+  top: 20%;
 }
 
 @keyframes overlayShow {

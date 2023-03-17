@@ -21,7 +21,7 @@ function App() {
         <h1>Todo List</h1>
       </div>
       <InsertTask />
-      <main className="todo-list-container">
+      <div className="todo-list-container">
         {!tasks.length ? (
           <p className="no-tasks">No tasks</p>
         ) : (
@@ -37,10 +37,10 @@ function App() {
             );
           })
         )}
-        <div className="chore-list-container">
+      </div>
+      <div className="chore-list-container">
           <ChoresDone />
         </div>
-      </main>
     </div>
   );
 }
