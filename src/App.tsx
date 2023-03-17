@@ -1,49 +1,48 @@
-import { useState } from 'react'
-import DayInput from './components/DayInput'
-import InsertTask from './components/InsertTask'
-import { Todo } from "./Types/Todo"
-import './styles/App.css'
-import Task from './components/Task'
-import { Description } from '@radix-ui/react-alert-dialog'
+import { useState } from "react";
+import InsertTask from "./components/InsertTask";
+import { Todo } from "./Types/Todo";
+import "./styles/App.css";
+import Task from "./components/Task";
+import ChoresDone from "./components/ChoresDone";
+import { addTask, useTask } from "./redux/sliceTask";
+import { useSelector, useDispatch } from "react-redux";
+import { add } from "date-fns";
 
 function App() {
-  const [todoList, setTodoList] = useState<Todo[]>([
-    {
-      title: "Teste",
-      description: "DESCRIÇAOQUALQUER",
-      date: [
-          "13/03/2023",
-          "21/03/2023",
-          "22/03/2023"
-      ],
-      done: false
-  }
-  ])
+  const state = useSelector(useTask);
 
-  const LocalStorageArray = JSON.parse(localStorage.getItem('TodoList'));
-  console.log(LocalStorageArray);
-  
+  const dispatch = useDispatch();
+
+  const tasks = state.tasks;
 
   return (
     <div className="App">
       <div>
         <h1>Todo List</h1>
       </div>
-      <InsertTask setTodoList={setTodoList} />
-      <main className='todo-list-container'>
-        {localStorage.length < 1 ? todoList.map((todo:Todo) => {
-          return (
-            <Task title={todo.title} description={todo.description} date={todo.date} done={todo.done} />
-          )
-        }) : [LocalStorageArray].map((todo:Todo) => {
-          return (
-            <Task title={todo.title} description={todo.description} date={todo.date} done={todo.done} />
-          )
-        })
-        }
+      <InsertTask />
+      <main className="todo-list-container">
+        {!tasks.length ? (
+          <p className="no-tasks">No tasks</p>
+        ) : (
+          tasks.map((todo) => {
+            return (
+              <Task
+                key={todo.title}
+                title={todo.title}
+                description={todo.description}
+                date={todo.date}
+                done={false}
+              />
+            );
+          })
+        )}
+        <div className="chore-list-container">
+          <ChoresDone />
+        </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

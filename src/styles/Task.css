@@ -34,8 +34,8 @@ h3 {
 .AccordionItem:focus-within {
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 2px var(--mauve12);
 }
+
 
 .AccordionHeader {
   display: flex;
@@ -63,8 +63,8 @@ h3 {
 .AccordionContent {
   overflow: hidden;
   font-size: 15px;
-  color: var(--mauve11);
-  background-color: var(--mauve2);
+  color: #76a4fd;
+  background-color: #0d2e49;
 }
 .AccordionContent[data-state='open'] {
   animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
@@ -78,11 +78,21 @@ h3 {
 }
 
 .AccordionChevron {
-  color: var(--violet10);
+  color: #113d61;
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 .AccordionTrigger[data-state='open'] > .AccordionChevron {
   transform: rotate(180deg);
+}
+
+.taskDate {
+  font-size: 12px;
+  color: #76a4fd;
+  display: flex;
+}
+
+.ChoresDone {
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes slideDown {

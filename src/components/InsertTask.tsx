@@ -4,12 +4,15 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import DayInput from "./DayInput";
 import { Todo } from "../Types/Todo";
 import "../styles/InsertTask.css";
+import { addTask, useTask } from '../redux/sliceTask'
+import { useDispatch, useSelector } from "react-redux";
 
-interface Props {
-  setTodoList: React.Dispatch<React.SetStateAction<Todo[]>>;
-}
+export default function InsertTask() {
+  const dispatch = useDispatch();
+  const state = useSelector(useTask);
+  const tasks = state.tasks;
 
-export default function InsertTask({ setTodoList }: Props) {
+  const [error, setError] = useState(false);
   const [form, setForm] = useState<Todo>({
     title: "",
     description: "",
@@ -19,9 +22,26 @@ export default function InsertTask({ setTodoList }: Props) {
 
   const onDaysSelected = (days: string[]) => { 
     setForm({ ...form, date: days });
+  };
+
+  const checkTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const title = e.target.value;
+    setForm({ ...form, title: title });
+    const check = tasks.find((task) => task.title === title);
+    if (check) {
+      setError(true);
+    } else {
+      setError(false);
+    }
   }
 
-  const handleForm = () => {
+  const handleForm = (e) => {
+    if (form.title === "") {
+      e.preventDefault();
+      setError(true);
+      return;
+    }
+    dispatch(addTask(form));
     setForm({
       title: "",
       description: "",
@@ -50,7 +70,7 @@ export default function InsertTask({ setTodoList }: Props) {
                   name="title"
                   id="title"
                   value={form.title}
-                  onChange={(e) => setForm({ ...form, title: e.target.value })}
+                  onChange={(e) => checkTitle(e)}
                 />
               </div>
               <div className="form-group">
@@ -72,11 +92,17 @@ export default function InsertTask({ setTodoList }: Props) {
               <div className="form-group"></div>
             </form>
             <AlertDialog.Action asChild>
-              <button onClick={handleForm}>Adicionar</button>
+              <button disabled={error} onClick={handleForm}>Adicionar</button>
             </AlertDialog.Action>
             <AlertDialog.Cancel asChild>
               <button>Cancel</button>
             </AlertDialog.Cancel>
+            {error && (
+              <div className="error">
+                <p>Não é possivel atribuir 2 Tasks com o mesmo <strong>nome</strong> ou <strong>vazio</strong></p>
+              </div>
+            )
+            }
           </div>
         </AlertDialog.Content>
       </AlertDialog.Portal>
