@@ -2,6 +2,8 @@
 
 Este é um projeto de lista de tarefas desenvolvido em React com TypeScript.
 
+#### Link do projeto: https://todo-react-ts-mu.vercel.app/
+
 ## Funcionalidades
 
 - Adicionar uma nova tarefa
