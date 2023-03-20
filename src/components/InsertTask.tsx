@@ -21,8 +21,6 @@ export default function InsertTask() {
   });
 
   const onDaysSelected = (days: string[]) => { 
-    console.log(days);
-    
     setForm({ ...form, date: days });
   };
 
