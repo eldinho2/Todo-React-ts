@@ -11,3 +11,44 @@
   font-size: 140%; 
   color: red;
 }
+
+.rdp-head {
+  color: red;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.rdp-tbody {
+  height: 100%;
+}
+
+.rdp-row {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.rdp-cell {
+  display: table-cell;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.rdp-caption {
+  display: flex;
+  margin: 0 0 0.5em 0;
+}
+
+.rdp-caption_label{
+  text-transform: Capitalize;
+}

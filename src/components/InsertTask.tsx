@@ -27,7 +27,7 @@ export default function InsertTask() {
   const checkTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
     setForm({ ...form, title: title });
-    const check = tasks.find((task) => task.title === title);
+    const check = tasks.find((task: any) => task.title === title);
     if (check) {
       setError(true);
     } else {
@@ -35,7 +35,7 @@ export default function InsertTask() {
     }
   }
 
-  const handleForm = (e) => {
+  const handleForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (form.title === "") {
       e.preventDefault();
       setError(true);
@@ -61,7 +61,7 @@ export default function InsertTask() {
           <AlertDialog.Title className="AlertDialogTitle">
             Detalhes
           </AlertDialog.Title>
-          <div>
+          <div className="form-main">
             <form action="">
               <div className="form-group">
                 <label htmlFor="title">Título</label>
@@ -70,13 +70,16 @@ export default function InsertTask() {
                   name="title"
                   id="title"
                   value={form.title}
+                  maxLength={50}
                   onChange={(e) => checkTitle(e)}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="description">Descrição</label>
-                <input
-                  type="text"
+                <textarea 
+                  rows={5}
+                  cols={30}
+                  className="form-description"
                   name="description"
                   id="description"
                   value={form.description}
@@ -85,18 +88,20 @@ export default function InsertTask() {
                   }
                 />
               </div>
-              <div className="form-group">
+              <div className="form-data">
                 <label htmlFor="date">Data</label>
                 <DayInput onDaysSelected={onDaysSelected} />
               </div>
               <div className="form-group"></div>
             </form>
-            <AlertDialog.Action asChild>
-              <button disabled={error} onClick={handleForm}>Adicionar</button>
-            </AlertDialog.Action>
-            <AlertDialog.Cancel asChild>
-              <button>Cancel</button>
-            </AlertDialog.Cancel>
+            <div className="form-submit">
+              <AlertDialog.Action asChild>
+                <button className="Button-mauve" disabled={error} onClick={handleForm}>Adicionar</button>
+              </AlertDialog.Action>
+              <AlertDialog.Cancel asChild>
+                <button className="Button-red">Cancel</button>
+              </AlertDialog.Cancel>
+            </div>
             {error && (
               <div className="error">
                 <p>Não é possivel atribuir 2 Tasks com o mesmo <strong>nome</strong> ou <strong>vazio</strong></p>

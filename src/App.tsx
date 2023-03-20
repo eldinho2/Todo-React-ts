@@ -25,7 +25,7 @@ function App() {
         {!tasks.length ? (
           <p className="no-tasks">No tasks</p>
         ) : (
-          tasks.map((todo) => {
+          tasks.map((todo: any) => {
             return (
               <Task
                 key={todo.title}

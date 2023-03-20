@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface Todo {
   title: string;
   description: string | number | undefined;
-  date: string[] | Array<string>;
+  date: string[] | string;
   done: boolean;
 }
 
@@ -57,6 +57,6 @@ export default sliceTask.reducer;
 export const { addTask, addCompletedTask, delTask } = sliceTask.actions;
 
 export const useTask = (state: any) => {
-  return state.task as Todo[];
+  return state.task;
 }
 

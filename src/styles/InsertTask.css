@@ -16,7 +16,10 @@ button {
 }
 
 .AlertDialogContent {
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: #0d2e49;
+  color: #76a4fd;
   border-radius: 6px;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   position: fixed;
@@ -31,6 +34,30 @@ button {
 }
 .AlertDialogContent:focus {
   outline: none;
+}
+
+.form-main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: stretch;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-description {
+  resize: none;
+}
+
+.form-submit  {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .AlertDialogTitle {
@@ -67,6 +94,7 @@ button {
   box-shadow: 0 2px 10px var(--blackA7);
   margin: auto auto 10px auto;
   position: relative;
+  cursor: pointer;
 }
 .Button.violet:hover {
   background-color: #234b97;
@@ -74,33 +102,33 @@ button {
 .Button.violet:focus {
   box-shadow: 0 0 0 2px black;
 }
-.Button.red {
-  background-color: var(--red4);
+.Button-red {
+  background-color: #566d80;
   color: var(--red11);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10%;
 }
-.Button.red:hover {
+.Button-red:hover {
   background-color: var(--red5);
 }
-.Button.red:focus {
-  box-shadow: 0 0 0 2px var(--red7);
+
+.Button-mauve {
+  background-color: #566d80;
+  color: #57c35e;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10%;
 }
-.Button.mauve {
-  background-color: var(--mauve4);
-  color: var(--mauve11);
-}
-.Button.mauve:hover {
-  background-color: var(--mauve5);
-}
-.Button.mauve:focus {
-  box-shadow: 0 0 0 2px var(--mauve7);
+.Button-mauve:hover {
+  background-color: #b6faba;
 }
 
 .Button.violet img {
-  max-width: 100%;
-  max-height: 20px;
+  height: 15px;
   position: absolute;
   left: 5%;
-  top: 20%;
+  top: 26%;
 }
 
 @keyframes overlayShow {
