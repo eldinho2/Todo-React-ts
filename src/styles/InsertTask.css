@@ -124,11 +124,12 @@ button {
   background-color: #b6faba;
 }
 
-.Button.violet img {
+.Button.violet svg {
   height: 15px;
+  width: 20px;
   position: absolute;
   left: 5%;
-  top: 26%;
+  top: 28%;
 }
 
 @keyframes overlayShow {

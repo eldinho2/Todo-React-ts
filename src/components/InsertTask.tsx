@@ -4,7 +4,7 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import DayInput from "./DayInput";
 import { Todo } from "../Types/Todo";
 import "../styles/InsertTask.css";
-import { addTask, useTask } from '../redux/sliceTask'
+import { addTask, useTask } from "../redux/sliceTask";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function InsertTask() {
@@ -20,7 +20,7 @@ export default function InsertTask() {
     done: false,
   });
 
-  const onDaysSelected = (days: string[]) => { 
+  const onDaysSelected = (days: string[]) => {
     setForm({ ...form, date: days });
   };
 
@@ -33,7 +33,7 @@ export default function InsertTask() {
     } else {
       setError(false);
     }
-  }
+  };
 
   const handleForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (form.title === "") {
@@ -53,7 +53,24 @@ export default function InsertTask() {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
-        <button className="Button violet"><img src="./src/assets/plus-svgrepo-com.svg" alt="" />Adicionar Tarefa</button>
+        <button className="Button violet">
+          <svg
+            className=""
+            fill="#000000"
+            height="10px"
+            width="10px"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 455 455"
+          >
+            <polygon
+              points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 
+	455,242.5 "
+            />
+          </svg>
+          Adicionar Tarefa
+        </button>
       </AlertDialog.Trigger>
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="AlertDialogOverlay" />
@@ -76,7 +93,7 @@ export default function InsertTask() {
               </div>
               <div className="form-group">
                 <label htmlFor="description">Descrição</label>
-                <textarea 
+                <textarea
                   rows={5}
                   cols={30}
                   className="form-description"
@@ -96,7 +113,13 @@ export default function InsertTask() {
             </form>
             <div className="form-submit">
               <AlertDialog.Action asChild>
-                <button className="Button-mauve" disabled={error} onClick={handleForm}>Adicionar</button>
+                <button
+                  className="Button-mauve"
+                  disabled={error}
+                  onClick={handleForm}
+                >
+                  Adicionar
+                </button>
               </AlertDialog.Action>
               <AlertDialog.Cancel asChild>
                 <button className="Button-red">Cancel</button>
@@ -104,10 +127,12 @@ export default function InsertTask() {
             </div>
             {error && (
               <div className="error">
-                <p>Não é possivel atribuir 2 Tasks com o mesmo <strong>nome</strong> ou <strong>vazio</strong></p>
+                <p>
+                  Não é possivel atribuir 2 Tasks com o mesmo{" "}
+                  <strong>nome</strong> ou <strong>vazio</strong>
+                </p>
               </div>
-            )
-            }
+            )}
           </div>
         </AlertDialog.Content>
       </AlertDialog.Portal>

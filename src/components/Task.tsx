@@ -49,8 +49,6 @@ const Task = ({ title, description, date, done }: Todo) => {
 
   const state = useSelector(useTask);
 
-  const tasks = state.completedTasks;
-
   const handleClick = (e: any) => {
     e.stopPropagation();
     setIsChecked(!isChecked);
@@ -100,7 +98,7 @@ const Task = ({ title, description, date, done }: Todo) => {
                 onClick={handleClick}
               ></input>
               <img
-                src="./src/assets/icons8-remove-50.png"
+                src="https://cdn.discordapp.com/attachments/616035988518600704/1087520422234423306/icons8-remove-50.png"
                 alt=""
                 onClick={handleDeleteTask}
               />
