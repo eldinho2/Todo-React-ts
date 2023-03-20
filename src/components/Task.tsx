@@ -23,17 +23,17 @@ const Task = ({ title, description, date, done }: Todo) => {
           ref={forwardedRef}
         >
           {children}
-          {console.log(children[0]._owner.pendingProps.description)}
-          {children[0]._owner.pendingProps.description ? (
-            <ChevronDownIcon className="AccordionChevron" aria-hidden />
-          ) : (
-            <div></div>
-          )}
+          {console.log(children[0]._owner.pendingProps)}
+          {console.log(!children[0]._owner.pendingProps.date)}
+          {
+            children[0]._owner.pendingProps.description === '' && children[0]._owner.pendingProps.date.length < 1 ? (<div></div>) : (
+              <ChevronDownIcon className="AccordionChevron" aria-hidden />
+            )
+          }
         </Accordion.Trigger>
       </Accordion.Header>
     )
   );
-  
 
   const AccordionContent = React.forwardRef(
     ({ children, className, ...props }: any, forwardedRef) => (
@@ -71,6 +71,8 @@ const Task = ({ title, description, date, done }: Todo) => {
   };
 
   const showDate = (date: string[]) => {
+    console.log(date);
+
     if (date.length === 0) {
       return;
     }
@@ -80,18 +82,16 @@ const Task = ({ title, description, date, done }: Todo) => {
     if (date.length > 1) {
       return `de ${date[0]} ate ${date[date.length - 1]}`;
     }
-  }
-
+  };
 
   const showDesc = (description: any) => {
     if (description.length === 0) {
-      return 'Sem descrição';
+      return "Sem descrição";
     }
     if (description.length > 0) {
       return description;
     }
-  }
-
+  };
 
   return (
     <Accordion.Root className="AccordionRoot" type="single" collapsible>
@@ -114,16 +114,22 @@ const Task = ({ title, description, date, done }: Todo) => {
           }
           <div className="taskTitle">{title}</div>
         </AccordionTrigger>
-        {description ? (
-                  <AccordionContent>
+          {
+              description === '' && date.length < 1 ? (null) : (
+              <AccordionContent>
+              {
+                description ? (
                   <div className="taskDescription">{showDesc(description)}</div>
-                  <div
-                   title={date}
-                   className="taskDate">
-                    {showDate(date)}
-                  </div>
-                </AccordionContent>
-                ) : ( null )}
+                ) : (null)
+              }
+              {
+                date ? (
+                  <div title={date.toString()} className="taskDate">{showDate(date)}</div>
+                ) : (null)
+              }
+            </AccordionContent>
+            )
+          }
       </Accordion.Item>
     </Accordion.Root>
   );

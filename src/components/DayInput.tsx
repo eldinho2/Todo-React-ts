@@ -8,6 +8,7 @@ interface Props {
   onDaysSelected: (days: string[]) => void;
 }
 
+
 export default function Example({ onDaysSelected }: Props) {
   const [selectedDays, setSelectedDays] = useState<Date[]>([]);
   
@@ -33,8 +34,7 @@ export default function Example({ onDaysSelected }: Props) {
         selected={selectedDays}
         min={1}
         max={30}
-        dateFormat={'dd/MM/yyyy'}
-        onSelect={setSelectedDays}
+        onSelect={(dates: Date[] | undefined) => dates && setSelectedDays(dates)}
         modifiersClassNames={{
           selected: 'my-selected',
           today: 'my-today'

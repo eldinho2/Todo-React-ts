@@ -1,6 +1,6 @@
 export interface Todo {
   title: string;
   description: string | undefined;
-  date: string[] | Array<string>;
+  date: string[];
   done: boolean;
 }

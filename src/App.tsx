@@ -23,7 +23,7 @@ function App() {
       <InsertTask />
       <div className="todo-list-container">
         {!tasks.length ? (
-          <p className="no-tasks">No tasks</p>
+          <p className="no-tasks">Sem tarefas, adicione</p>
         ) : (
           tasks.map((todo: any) => {
             return (
