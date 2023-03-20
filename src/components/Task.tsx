@@ -23,9 +23,8 @@ const Task = ({ title, description, date, done }: Todo) => {
           ref={forwardedRef}
         >
           {children}
-          {console.log(children)}
           {
-            children[0]._owner.pendingProps.description === '' && children[0]._owner.pendingProps.date.length < 1 ? (<div></div>) : (
+            description === '' && date.length < 1  ? (<div></div>) : (
               <ChevronDownIcon className="AccordionChevron" aria-hidden />
             )
           }
