@@ -23,8 +23,6 @@ const Task = ({ title, description, date, done }: Todo) => {
           ref={forwardedRef}
         >
           {children}
-          {console.log(children[0]._owner.pendingProps)}
-          {console.log(!children[0]._owner.pendingProps.date)}
           {
             children[0]._owner.pendingProps.description === '' && children[0]._owner.pendingProps.date.length < 1 ? (<div></div>) : (
               <ChevronDownIcon className="AccordionChevron" aria-hidden />
@@ -56,7 +54,6 @@ const Task = ({ title, description, date, done }: Todo) => {
   const handleClick = (e: any) => {
     e.stopPropagation();
     setIsChecked(!isChecked);
-    console.log(tasks);
     if (done) {
       dispatch(addTask({ title, description, date, done: false }));
     } else {
@@ -66,13 +63,10 @@ const Task = ({ title, description, date, done }: Todo) => {
 
   const handleDeleteTask = (e: any) => {
     e.stopPropagation();
-    console.log("delete");
     dispatch(delTask({ title, description, date, done }));
   };
 
   const showDate = (date: string[]) => {
-    console.log(date);
-
     if (date.length === 0) {
       return;
     }

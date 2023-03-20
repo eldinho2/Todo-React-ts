@@ -9,26 +9,8 @@ interface Todo {
 
 const INITIAL_STATE = {
   tasks: [
-    {
-      title: "Task 1",
-      description: "Description 1",
-      date: [
-        "2021-01-01",
-        "2021-01-02"
-      ],
-      done: false,
-    }
   ]as Todo[] ,
   completedTasks: [
-    {
-      title: "Task COMPLETED",
-      description: "Description COMPLETED",
-      date: [
-        "2021-01-01",
-        "2021-01-02"
-      ],
-      done: true,
-    }
   ] as Todo[],
 }
 
